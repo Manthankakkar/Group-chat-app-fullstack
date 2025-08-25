@@ -20,7 +20,7 @@ const getMessage=async(req,res)=>{
             include:[{model:User,attributes:["id","name","email"]}],
             order:[["createdAt","ASC"]]
         })
-        res.status(200).json({allmessages})
+        res.status(200).json({success:true,allmessages})
 
     }catch(err){
 res.status(500).json({message:err.message})
