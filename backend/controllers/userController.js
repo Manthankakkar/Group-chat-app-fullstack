@@ -1,4 +1,4 @@
-const { sign } = require("jsonwebtoken")
+// const { sign } = require("jsonwebtoken")
 const User=require("../model/user")
 const bcrypt=require("bcrypt")
 const signup=async(req,res)=>{
@@ -14,7 +14,7 @@ const signup=async(req,res)=>{
         }
         const hashedPassword=await bcrypt.hash(password,10)
         const newUser=await User.create({name,email,phonenumber,password:hashedPassword})
-        res.status(200).json({message:"user created successfully"})
+        res.status(200).json({success:true,message:"user created successfully"})
 
     }catch(err){
         res.status(500).json({message:err.message})
