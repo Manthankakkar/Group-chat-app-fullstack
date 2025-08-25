@@ -51,4 +51,18 @@ return res.status(500).json({message:err.message})
     }
 }
 
-module.exports={signup,login}
+
+const getUsers=async(req,res)=>{
+try{
+    const users=await User.findAll()
+    res.status(200).json({success:true,message:"Users has been fetched",users})
+
+
+}catch(err){
+    res.status(500).json({message:err.message})
+
+}
+
+
+}
+module.exports={signup,login,getUsers}
