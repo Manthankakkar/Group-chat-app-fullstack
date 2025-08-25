@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 
-app.use("/",userRoutes)
+app.use("/api/user",userRoutes)
 
 
 db.sync({alter:true})
