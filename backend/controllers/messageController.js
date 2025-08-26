@@ -1,5 +1,6 @@
 const Messages=require("../model/message")
 const User=require("../model/user")
+const { Op } = require("sequelize");
 
 
 const createMessage= async (req,res)=>{
@@ -16,7 +17,9 @@ const createMessage= async (req,res)=>{
 
 const getMessage=async(req,res)=>{
     try{
+        const lastId=req.query.lastId
         const allmessages=await Messages.findAll({
+            where:{id:{[Op.gt]:lastId}},
             include:[{model:User,attributes:["id","name","email"]}],
             order:[["createdAt","ASC"]]
         })
